@@ -1,0 +1,25 @@
+%h1 Listing payees
+
+%table
+  %tr
+    %th Name
+    %th Url
+    %th Contact
+    %th Note
+    %th
+    %th
+    %th
+
+  - @payees.each do |payee|
+    %tr
+      %td= payee.name
+      %td= payee.url
+      %td= payee.contact
+      %td= payee.note
+      %td= link_to 'Show', payee
+      %td= link_to 'Edit', edit_payee_path(payee)
+      %td= link_to 'Destroy', payee, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Payee', new_payee_path

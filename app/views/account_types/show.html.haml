@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @account_type.name
+%p
+  %b Desc:
+  = @account_type.desc
+%p
+  %b Factor:
+  = @account_type.factor
+%p
+  %b Active:
+  = @account_type.active  
+
+= link_to 'Edit', edit_account_type_path(@account_type)
+\|
+= link_to 'Back', account_types_path

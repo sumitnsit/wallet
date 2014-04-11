@@ -1,0 +1,22 @@
+= form_for @shopping do |f|
+  - if @shopping.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@shopping.errors.count, "error")} prohibited this shopping from being saved:"
+      %ul
+        - @shopping.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :account_id
+    = f.number_field :account_id
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :amount
+    = f.text_field :amount
+  .field
+    = f.label :bill_number
+    = f.number_field :bill_number
+  .actions
+    = f.submit 'Save'

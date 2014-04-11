@@ -1,0 +1,25 @@
+= form_for @transfer do |f|
+  - if @transfer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@transfer.errors.count, "error")} prohibited this transfer from being saved:"
+      %ul
+        - @transfer.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :to_account
+    = f.select :to_account, Account.active.collect {|p| [ p.name, p.id ] }
+  .field
+    = f.label :from_account
+    = f.select :from_account, Account.active.collect {|p| [ p.name, p.id ] }
+  .field
+    = f.label :amount
+    = f.text_field :amount
+  .field
+    = f.label :date
+    = f.date_select :date
+  .field
+    = f.label :note
+    = f.text_area :note
+  .actions
+    = f.submit 'Save'

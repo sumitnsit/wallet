@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Money</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="menu_bar">
+	<ul>
+		<li><%= link_to "Accounts", accounts_path %></li>
+		<li><%= link_to "Account Types", account_types_path %></li>
+		<li><%= link_to "Categories", categories_path %></li>
+		<li><%= link_to "Units", units_path %></li>
+		<li><%= link_to "Currencies", currencies_path %></li>
+		<li><%= link_to "Shoppings", shoppings_path %></li>
+		<li><%= link_to "Products", products_path %></li>
+		<li><%= link_to "Payees", payees_path %></li>
+		<li><%= link_to "Transfers", transfers_path %></li>	
+	</ul>
+</div>
+
+<%= yield %>
+
+</body>
+</html>
