@@ -1,0 +1,22 @@
+= form_for @payee do |f|
+  - if @payee.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@payee.errors.count, "error")} prohibited this payee from being saved:"
+      %ul
+        - @payee.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :url
+    = f.text_field :url
+  .field
+    = f.label :contact
+    = f.number_field :contact
+  .field
+    = f.label :note
+    = f.text_area :note
+  .actions
+    = f.submit 'Save'

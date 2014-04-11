@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @unit.name
+%p
+  %b Symbol:
+  = @unit.symbol
+%p
+  %b Active:
+  = @unit.active
+%p
+  %b Type:
+  = @unit.unit_type
+%p
+  %b Note:
+  = @unit.note
+
+= link_to 'Edit', edit_unit_path(@unit)
+\|
+= link_to 'Back', units_path

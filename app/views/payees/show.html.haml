@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @payee.name
+%p
+  %b Url:
+  = @payee.url
+%p
+  %b Contact:
+  = @payee.contact
+%p
+  %b Note:
+  = @payee.note
+
+= link_to 'Edit', edit_payee_path(@payee)
+\|
+= link_to 'Back', payees_path

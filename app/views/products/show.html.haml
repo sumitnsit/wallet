@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @product.name
+%p
+  %b Quantity:
+  = @product.quantity
+%p
+  %b Rate:
+  = @product.rate
+%p
+  %b Amount:
+  = @product.amount
+%p
+  %b Unit:
+  = @product.unit_id
+%p
+  %b Category:
+  = @product.category_id
+%p
+  %b Payee:
+  = @product.payee_id
+%p
+  %b Shopping:
+  = @product.shopping_id
+
+= link_to 'Edit', edit_product_path(@product)
+\|
+= link_to 'Back', products_path

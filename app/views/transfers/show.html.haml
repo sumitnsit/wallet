@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b From account:
+  = @transfer.from_account
+%p
+  %b To account:
+  = @transfer.to_account
+%p
+  %b Amount:
+  = @transfer.amount
+%p
+  %b Date:
+  = @transfer.date
+%p
+  %b Note:
+  = @transfer.note
+
+= link_to 'Edit', edit_transfer_path(@transfer)
+\|
+= link_to 'Back', transfers_path

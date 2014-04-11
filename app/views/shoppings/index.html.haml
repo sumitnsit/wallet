@@ -1,0 +1,25 @@
+%h1 Listing shoppings
+
+%table
+  %tr
+    %th Account
+    %th Date
+    %th Amount
+    %th Bill number
+    %th
+    %th
+    %th
+
+  - @shoppings.each do |shopping|
+    %tr
+      %td= shopping.account_id
+      %td= shopping.date
+      %td= shopping.amount
+      %td= shopping.bill_number
+      %td= link_to 'Show', shopping
+      %td= link_to 'Edit', edit_shopping_path(shopping)
+      %td= link_to 'Destroy', shopping, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Shopping', new_shopping_path

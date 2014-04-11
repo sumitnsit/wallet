@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Parent:
+  = @category.parent.name
+%p
+  %b Name:
+  = @category.name
+%p
+  %b Active:
+  = @category.active
+%p
+  %b Note:
+  = @category.note
+
+= link_to 'Edit', edit_category_path(@category)
+\|
+= link_to 'Back', categories_path

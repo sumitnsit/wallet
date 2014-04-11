@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Account:
+  = @shopping.account_id
+%p
+  %b Date:
+  = @shopping.date
+%p
+  %b Amount:
+  = @shopping.amount
+%p
+  %b Bill number:
+  = @shopping.bill_number
+
+= link_to 'Edit', edit_shopping_path(@shopping)
+\|
+= link_to 'Back', shoppings_path
