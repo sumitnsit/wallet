@@ -15,5 +15,5 @@
   .span1.table_head
 
 - @accounts.each do |account|
-  .row-fluid{data: {target: "row_#{account.id}"}}
+  .row-fluid{class: "data_row", data: {target: "row_#{account.id}"}}
     = render partial: 'modularized/account_row_view', locals: {account: account}

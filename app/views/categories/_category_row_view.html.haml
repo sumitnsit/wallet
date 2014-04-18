@@ -1,0 +1,5 @@
+.span3= category.parent.name
+.span3= category.name
+.span2= category.active
+.span3= category.note
+.span1= link_to 'Edit', edit_category_path(category, target: "row_#{category.id}"),remote: true, data:{source: "row_#{category.id}"}

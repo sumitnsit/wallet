@@ -1,25 +1,15 @@
-%h1 Listing categories
-
-%table.table.table-striped
-  %tr
-    %th Parent
-    %th Name
-    %th Active
-    %th Note
-    %th
-    %th
-    %th
-
-  - @categories.each do |category|
-    %tr
-      %td= category.parent.nil? ? "None" : category.parent.name
-      %td= category.name
-      %td= category.active
-      %td= category.note
-      %td= link_to 'Show', category
-      %td= link_to 'Edit', edit_category_path(category)
-      %td= link_to 'Destroy', category, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
+%h1 Categories
 = link_to 'New Category', new_category_path
+%br
+%br
+.row-fluid
+  .span3.table_head Parent
+  .span3.table_head Name
+  .span2.table_head Active
+  .span3.table_head Note
+  .span1.table_head
+
+- @categories.each do |category|
+  .row-fluid{class: "data_row", data: {target: "row_#{category.id}"}}
+    = render partial: 'category_row_view', locals: {category: category}  
+
