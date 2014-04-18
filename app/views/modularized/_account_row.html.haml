@@ -1,0 +1,9 @@
+= form_for @account, remote: true, data: {source: target} do |f|
+  .row-fluid
+    .span2= f.text_field :name
+    .span2= f.select :account_type_id, AccountType.active.collect {|p| [ p.name, p.id ] }
+    .span2= f.select :currency_id, Currency.active.collect {|p| [ p.name, p.id ] }     
+    .span2= f.text_field :init_amount
+    .span1= f.check_box :active
+    .span2= f.text_field :note     
+    .span1= f.submit 'Save'

@@ -1,0 +1,19 @@
+%tr
+  %td
+    = p.text_field :name
+  %td
+    = p.text_field :quantity
+  %td
+    = p.text_field :rate              
+  %td
+    = p.text_field :amount, :id => "amount"              
+  %td
+    = p.select 'unit_id', Unit.active.collect {|p| [ p.name, p.id ] }
+  %td
+    = p.select 'category_id', Category.active.collect {|p| [ p.name, p.id ] }
+  %td
+    = p.select 'payee_id', Payee.all.collect {|p| [ p.name, p.id ] }
+
+  %td
+    = link_to '<i class="glyphicon glyphicon-trash">w</i>'.html_safe, nil, data: { confirm: 'Are you sure?' }
+  = p.hidden_field :id

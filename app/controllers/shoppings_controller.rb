@@ -15,6 +15,7 @@ class ShoppingsController < ApplicationController
   # GET /shoppings/new
   def new
     @shopping = Shopping.new
+    @shopping.products.build
   end
 
   # GET /shoppings/1/edit
@@ -69,6 +70,6 @@ class ShoppingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopping_params
-      params.require(:shopping).permit(:account_id, :date, :amount, :bill_number)
+      params.require(:shopping).permit(:account_id, :date, :amount, :bill_number, :products_attributes => [:name, :quantity, :rate, :amount, :unit_id, :category_id, :payee_id, :id])
     end
 end

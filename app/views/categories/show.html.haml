@@ -2,7 +2,7 @@
 
 %p
   %b Parent:
-  = @category.parent.name
+  = @category.parent.nil? ? "None" : @category.parent.name
 %p
   %b Name:
   = @category.name

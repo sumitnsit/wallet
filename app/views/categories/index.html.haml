@@ -1,6 +1,6 @@
 %h1 Listing categories
 
-%table
+%table.table.table-striped
   %tr
     %th Parent
     %th Name
@@ -12,7 +12,7 @@
 
   - @categories.each do |category|
     %tr
-      %td= category.parent.name
+      %td= category.parent.nil? ? "None" : category.parent.name
       %td= category.name
       %td= category.active
       %td= category.note

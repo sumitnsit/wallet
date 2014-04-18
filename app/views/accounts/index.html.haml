@@ -1,29 +1,19 @@
-%h1 Listing accounts
+= javascript_include_tag "/assets/accounts.js"
 
-%table
-  %tr
-    %th Name
-    %th Account type
-    %th Init amount
-    %th Note
-    %th Active
-    %th Currency
-    %th
-    %th
-    %th
-
-  - @accounts.each do |account|
-    %tr
-      %td= account.name
-      %td= account.account_type.name
-      %td= account.init_amount
-      %td= account.note
-      %td= account.active
-      %td= account.currency.symbol
-      %td= link_to 'Show', account
-      %td= link_to 'Edit', edit_account_path(account)
-      %td= link_to 'Destroy', account, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+%h1 Accounts
+= link_to 'New Account', new_account_path
+%br
 %br
 
-= link_to 'New Account', new_account_path
+.row-fluid
+  .span2.table_head Name
+  .span2.table_head Account type
+  .span2.table_head Currency    
+  .span2.table_head Balance
+  .span1.table_head Active
+  .span2.table_head Note
+  .span1.table_head
+
+- @accounts.each do |account|
+  .row-fluid{data: {target: "row_#{account.id}"}}
+    = render partial: 'modularized/account_row_view', locals: {account: account}

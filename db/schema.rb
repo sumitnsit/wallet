@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140411092031) do
+ActiveRecord::Schema.define(version: 20140417103004) do
 
   create_table "account_types", force: true do |t|
     t.string   "name"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 20140411092031) do
     t.boolean  "active"
     t.string   "unit_type"
     t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

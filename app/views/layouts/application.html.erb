@@ -8,11 +8,13 @@
 </head>
 <body>
 
-<div class="menu_bar">
+<% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <div class="menu_bar">
 	<ul>
 		<li><%= link_to "Accounts", accounts_path %></li>
-		<li><%= link_to "Account Types", account_types_path %></li>
-		<li><%= link_to "Categories", categories_path %></li>
+		<li><%= link_to "Categories", categories_path, rel: :popover, data: {content: "<form><input type='text'/></form>", placement: :bottom, "original-title" => "Fill in form", trigger: :hover} %></li>
 		<li><%= link_to "Units", units_path %></li>
 		<li><%= link_to "Currencies", currencies_path %></li>
 		<li><%= link_to "Shoppings", shoppings_path %></li>
@@ -20,7 +22,12 @@
 		<li><%= link_to "Payees", payees_path %></li>
 		<li><%= link_to "Transfers", transfers_path %></li>	
 	</ul>
-</div>
+</div>    
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+
+
 
 <%= yield %>
 

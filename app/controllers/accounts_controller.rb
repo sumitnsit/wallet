@@ -19,6 +19,9 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1/edit
   def edit
+    respond_to do |format|
+      format.html { render partial: 'modularized/account_row', locals: {account: @account, target: params['target']} }
+    end
   end
 
   # POST /accounts
@@ -28,7 +31,7 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to accounts_url, notice: 'Account was successfully created.' }
         format.json { render action: 'show', status: :created, location: @account }
       else
         format.html { render action: 'new' }
@@ -42,7 +45,7 @@ class AccountsController < ApplicationController
   def update
     respond_to do |format|
       if @account.update(account_params)
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
+        format.html { render partial: 'modularized/account_row_view', locals: {account: @account} }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -54,9 +57,12 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   def destroy
-    @account.destroy
+    @account.active = !@account.active
+    @account.save
+
     respond_to do |format|
       format.html { redirect_to accounts_url }
+      format.js { render text: @account.active }      
       format.json { head :no_content }
     end
   end

@@ -10,8 +10,7 @@ puts "Seeding Account_Types"
 cash = AccountType.find_or_create_by(name: 'Cash', desc: 'Cash', factor: 1, active: true)
 bank = AccountType.find_or_create_by(name: 'Bank Account', desc: 'Bank account', factor: 1, active: true)
 cc = AccountType.find_or_create_by(name: 'Credit Card', desc: 'Credit card', factor: -1, active: true)
-AccountType.find_or_create_by(name: 'Test', desc: 'Test account', factor: 1, active: false)
-
+	
 puts "Seeding Currencies"
 inr = Currency.find_or_create_by(name: "Indian Rupee", symbol:"Rs", active: true)
 usd = Currency.find_or_create_by(name: "US Dolor", symbol:"$", active: true)
@@ -32,6 +31,8 @@ Unit.find_or_create_by(name: "Meter", symbol: "m", active: true, unit_type: "Len
 Unit.find_or_create_by(name: "Units", symbol: "U", active: true, unit_type: "Unit", note:"")
 
 puts "Seeding Categories"
-kitchen = Category.find_or_create_by(parent_id: 1, name: 'Kitchen', active: true, note: '')
-Category.find_or_create_by(parent_id: 1, name: 'Toiletries', active: true, note: '')
-Category.find_or_create_by(parent_id: kitchen.id, name: 'Grocery', active: true, note: '')
+none = Category.find_or_create_by(name: 'None', active: true, note: '')
+food = Category.find_or_create_by(parent_id: none.id, name: 'Food', active: true, note: '')
+Category.find_or_create_by(parent_id: none.id, name: 'Automobile', active: true, note: '')
+Category.find_or_create_by(parent_id: food.id, name: 'Grocery', active: true, note: '')
+Category.find_or_create_by(parent_id: food.id, name: 'Dining Out', active: true, note: '')

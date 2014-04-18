@@ -2,10 +2,10 @@
 
 %p
   %b From account:
-  = @transfer.from_account
+  = @transfer.debit_account.name
 %p
   %b To account:
-  = @transfer.to_account
+  = @transfer.credit_account.name
 %p
   %b Amount:
   = @transfer.amount

@@ -1,4 +1,4 @@
-= form_for @product do |f|
+= form_for @product do |p|
   - if @product.errors.any?
     #error_explanation
       %h2= "#{pluralize(@product.errors.count, "error")} prohibited this product from being saved:"
@@ -7,28 +7,28 @@
           %li= msg
 
   .field
-    = f.label :name
-    = f.text_field :name
+    = p.label :name
+    = p.text_field :name
   .field
-    = f.label :quantity
-    = f.text_field :quantity
+    = p.label :quantity
+    = p.text_field :quantity
   .field
-    = f.label :rate
-    = f.text_field :rate
+    = p.label :rate
+    = p.text_field :rate
   .field
-    = f.label :amount
-    = f.text_field :amount
+    = p.label :amount
+    = p.text_field :amount
   .field
-    = f.label :unit_id
-    = f.number_field :unit_id
+    = p.label :unit_id
+    = p.select :unit_id, Unit.active.collect {|p| [ p.name, p.id ] }
   .field
-    = f.label :category_id
-    = f.number_field :category_id
+    = p.label :category_id
+    = p.select :category_id, Category.active.collect {|p| [ p.name, p.id ] }
   .field
-    = f.label :payee_id
-    = f.number_field :payee_id
+    = p.label :payee_id
+    = p.select :payee_id, Payee.all.collect {|p| [ p.name, p.id ] }
   .field
-    = f.label :shopping_id
-    = f.number_field :shopping_id
+    = p.label :shopping_id
+    = p.number_field :shopping_id  
   .actions
-    = f.submit 'Save'
+    = p.submit 'Save'

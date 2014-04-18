@@ -1,22 +1,44 @@
+= javascript_include_tag "/assets/shoppings.js"
 = form_for @shopping do |f|
   - if @shopping.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@shopping.errors.count, "error")} prohibited this shopping from being saved:"
+      %h2
+        = pluralize(@shopping.errors.count, "error")
+        prohibited this shopping from being saved:
       %ul
         - @shopping.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :account_id
-    = f.number_field :account_id
   .field
     = f.label :date
-    = f.date_select :date
+    = f.text_field :date, :type => "date", :value => Time.now.strftime("%Y-%m-%d")
+  .field
+    = f.label :account_id
+    %br/
+    = f.select 'account_id', Account.active.collect {|p| [ p.name, p.id ] }
   .field
     = f.label :amount
+    %br/
     = f.text_field :amount
+
+  .items2
+    .add=link_to 'Add Product', ''
+    %table
+      %thead
+        %th Name
+        %th Quantity
+        %th Rate
+        %th Amount
+        %th Unit
+        %th Category
+        %th Payee
+        %th 
+      %tbody.items
+        = f.nested_fields_for :products do |p|
+          = render partial: 'modularized/product_row', locals: {p: p}
   .field
     = f.label :bill_number
-    = f.number_field :bill_number
-  .actions
-    = f.submit 'Save'
+    %br/
+    = f.text_field :bill_number
+  .k_toolbar_button
+    = link_to "<button type='button' class='btn btn_primary'>Cancel</button>".html_safe, :back
+    = f.submit :class => 'btn btn_primary'

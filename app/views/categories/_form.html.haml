@@ -8,7 +8,7 @@
 
   .field
     = f.label :parent_id
-    = f.select :parent_id, Category.all.collect {|p| [ p.name, p.id ] }
+    = f.select :parent_id, Category.main.collect {|p| [ p.name, p.id ] }
   .field
     = f.label :name
     = f.text_field :name

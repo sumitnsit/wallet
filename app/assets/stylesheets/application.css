@@ -11,13 +11,20 @@
  *= require_self
  *= require_tree .
  */
-
+/************** FINAL *************************************/
 body{
-	padding: 0px;
-	margin: 0px auto;
-	width: 90%;
+	width: 80%;
+	min-height: 800px;
+	margin: 0px auto !important;
+	box-shadow: 2px 0px 2px #666, -2px 0px 2px #666;
+	padding: 20px;
 }
 
+.table_head{
+	color: #0088CC;
+	font-weight: bold;
+}
+/*************** FINAL ************************************/
 .menu_bar{
 	padding: 20px 0px;
 }
