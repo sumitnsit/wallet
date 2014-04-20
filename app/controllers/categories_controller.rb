@@ -21,6 +21,13 @@ class CategoriesController < ApplicationController
   def edit
   end
 
+  def options
+    puts "0000000000000000000000"
+    respond_to do |format|
+      format.html { render partial: 'modularized/category_options' }
+    end
+  end
+
   # POST /categories
   # POST /categories.json
   def create

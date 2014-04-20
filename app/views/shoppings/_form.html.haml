@@ -8,37 +8,38 @@
       %ul
         - @shopping.errors.full_messages.each do |msg|
           %li= msg
-  .field
-    = f.label :date
-    = f.text_field :date, :type => "date", :value => Time.now.strftime("%Y-%m-%d")
-  .field
-    = f.label :account_id
-    %br/
-    = f.select 'account_id', Account.active.collect {|p| [ p.name, p.id ] }
-  .field
-    = f.label :amount
-    %br/
-    = f.text_field :amount
+  .row-fluid
+    .span2
+      %label= f.label :date
+      %p= f.text_field :date, :type => "date", :value => Time.now.strftime("%Y-%m-%d")
+    .span2
+      %label= f.label :account_id
+      %p= f.select 'account_id', Account.active.collect {|p| [ p.name, p.id ] }
+    .span2
+      %label= f.label :amount
+      %p= f.text_field :amount
 
   .items2
     .add=link_to 'Add Product', ''
-    %table
-      %thead
-        %th Name
-        %th Quantity
-        %th Rate
-        %th Amount
-        %th Unit
-        %th Category
-        %th Payee
-        %th 
-      %tbody.items
-        = f.nested_fields_for :products do |p|
-          = render partial: 'modularized/product_row', locals: {p: p}
-  .field
-    = f.label :bill_number
-    %br/
-    = f.text_field :bill_number
-  .k_toolbar_button
-    = link_to "<button type='button' class='btn btn_primary'>Cancel</button>".html_safe, :back
-    = f.submit :class => 'btn btn_primary'
+    .row-fluid
+      .span1.table_head Name
+      .span1.table_head Quantity
+      .span1.table_head Rate
+      .span1.table_head Amount
+      .span2.table_head Unit
+      .span2.table_head
+        %span Category
+        %span= link_to 'New', '/categories/options', remote: :true, data: {kpopform: :true, kPopPosition: :top}
+      .span2.table_head Payee
+      .span2.table_head
+    .items
+      = f.nested_fields_for :products do |p|
+        = render partial: 'modularized/product_row', locals: {p: p}
+  
+  .row-fluid
+    .span2
+      %label= f.label :bill_number
+      %p= f.text_field :bill_number
+  .row-fluid
+    .span1= link_to "<button type='button' class='btn btn_primary'>Cancel</button>".html_safe, :back
+    .span1= f.submit :class => 'btn btn_primary'

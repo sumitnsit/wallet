@@ -1,19 +1,10 @@
-%tr
-  %td
-    = p.text_field :name
-  %td
-    = p.text_field :quantity
-  %td
-    = p.text_field :rate              
-  %td
-    = p.text_field :amount, :id => "amount"              
-  %td
-    = p.select 'unit_id', Unit.active.collect {|p| [ p.name, p.id ] }
-  %td
-    = p.select 'category_id', Category.active.collect {|p| [ p.name, p.id ] }
-  %td
-    = p.select 'payee_id', Payee.all.collect {|p| [ p.name, p.id ] }
-
-  %td
-    = link_to '<i class="glyphicon glyphicon-trash">w</i>'.html_safe, nil, data: { confirm: 'Are you sure?' }
+.row-fluid.row_data
+  .span1= p.text_field :name
+  .span1= p.text_field :quantity
+  .span1= p.text_field :rate              
+  .span1= p.text_field :amount, :id => "amount"              
+  .span2= p.select 'unit_id', Unit.active.collect {|p| [ p.name, p.id ] }
+  .span2= select_tag 'category_id', options_from_collection_for_select(Category.active, "id", "name"), data: {kselect: :true}
+  .span2= p.select 'payee_id', Payee.all.collect {|p| [ p.name, p.id ] }
+  .span2= link_to '<i class="glyphicon glyphicon-trash">w</i>'.html_safe, nil, data: { confirm: 'Are you sure?' }
   = p.hidden_field :id

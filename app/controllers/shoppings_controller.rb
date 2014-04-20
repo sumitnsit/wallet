@@ -26,9 +26,10 @@ class ShoppingsController < ApplicationController
   # POST /shoppings.json
   def create
     @shopping = Shopping.new(shopping_params)
-
+    @shopping.account.debit(@shopping.amount)
     respond_to do |format|
       if @shopping.save
+        @shopping.account.save
         format.html { redirect_to @shopping, notice: 'Shopping was successfully created.' }
         format.json { render action: 'show', status: :created, location: @shopping }
       else
