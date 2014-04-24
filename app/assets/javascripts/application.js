@@ -22,3 +22,21 @@ $(window).keydown(function(event){
 	  return false;
 	}
 });
+
+
+function amountChanged(element){
+	var totalSum = 0;
+	$('[data-amount]').each(function(index, ele){
+		totalSum += parseInt($(this).val());
+
+	});
+
+	var rate = $(element).parent().parent().find('#rate');
+	var qnt = $(element).parent().parent().find('#qnt');
+
+	var q = parseFloat($(qnt).val());
+	var a = parseFloat($(element).val());
+	$(rate).val(a/q)
+
+	$("#shopping_amount").val(totalSum);
+}
