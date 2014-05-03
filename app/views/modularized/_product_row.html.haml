@@ -4,7 +4,7 @@
   .span1= p.text_field :amount, data: {amount: true}, :onchange =>'amountChanged(this)'     
   .span1= p.text_field :rate, id: :rate         
   .span2= p.select 'unit_id', Unit.active.collect {|p| [ p.name, p.id ] }
-  .span2= select_tag 'category_id', options_from_collection_for_select(Category.active, "id", "name"), data: {kselect: :true}
-  .span2= p.select 'payee_id', Payee.all.collect {|p| [ p.name, p.id ] }
-  .span2= link_to '<i class="glyphicon glyphicon-trash">w</i>'.html_safe, nil, data: { confirm: 'Are you sure?' }
+  .span2= select_tag "category_id", options_from_collection_for_select(Category.active.collect, "id", "name")
+  .span2= select_tag 'payee_id', options_from_collection_for_select(Payee.all.collect, "id", "name" )
+  .span2= link_to "Remove", nil, data: { confirm: 'Are you sure?' }
   = p.hidden_field :id

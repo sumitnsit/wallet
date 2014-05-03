@@ -9,4 +9,22 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
+
+  def paypal(return_url) 
+      values = { 
+        :business => 'sumit.india@gmail.com',
+        :cmd => '_cart',
+        :upload => 1,
+        :return => return_url,
+      } 
+    
+    values.merge!({ 
+      "amount_1" => 100,
+      "item_name_1" => "Yash",
+      "item_number_1" => 1,
+      "quantity_1" => '1'
+    })
+      "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+ end
+
 end

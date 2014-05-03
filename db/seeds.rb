@@ -32,7 +32,6 @@ Unit.find_or_create_by(name: "Units", symbol: "U", active: true, unit_type: "Uni
 
 puts "Seeding Categories"
 none = Category.find_or_create_by(name: 'None', active: true, note: '')
-Category.find_or_create_by(name: 'New Category', active: true, note: '')
 food = Category.find_or_create_by(parent_id: none.id, name: 'Food', active: true, note: '')
 Category.find_or_create_by(parent_id: none.id, name: 'Automobile', active: true, note: '')
 Category.find_or_create_by(parent_id: food.id, name: 'Grocery', active: true, note: '')

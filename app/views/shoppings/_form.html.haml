@@ -1,4 +1,29 @@
 = javascript_include_tag "/assets/shoppings.js"
+.modal.hide.fade{id: :myModal}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+    %h3 Modal header
+  .modal-body
+    = form_tag quick_new_categories_path, remote: :true, data: {"quick-category" => "true"} do
+      .k_modal_label Name
+      %input.k_modal_text{type: :text, name: :name}
+      .k_modal_label Parent
+      .k_modal_select= select_tag "Parent", options_from_collection_for_select(Category.main.collect, "id", "name")
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      %button.btn.btn-primary Create
+
+.modal.hide.fade{id: :newPayee}
+  .modal-header
+    %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", :type => "button"} &times;
+    %h3 Modal header
+  .modal-body
+    = form_tag quick_new_payees_path, remote: :true, data: {"quick-payee" => "true"} do
+      .k_modal_label Name
+      %input.k_modal_text{type: :text, name: :name}
+      %button.btn{"aria-hidden" => "true", "data-dismiss" => "modal"} Close
+      %button.btn.btn-primary Create
+
+ 
 = form_for @shopping do |f|
   - if @shopping.errors.any?
     #error_explanation
@@ -28,9 +53,9 @@
       .span1.table_head Rate      
       .span2.table_head Unit
       .span2.table_head
-        %span Category
-        %span= link_to 'New', '/categories/options', remote: :true, data: {kpopform: :true, kPopPosition: :top}
-      .span2.table_head Payee
+        %a{"data-target" => "#myModal", "data-toggle" => "modal", :type => "button"} Category
+      .span2.table_head
+        %a{"data-target" => "#newPayee", "data-toggle" => "modal", :type => "button"} Payee      
       .span2.table_head
     .items
       = f.nested_fields_for :products do |p|

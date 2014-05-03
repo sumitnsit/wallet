@@ -12,6 +12,14 @@ class PayeesController < ApplicationController
   def show
   end
 
+  def quick_new
+    @payee = Payee.create(:name => params[:name])
+
+    respond_to do |format|
+        format.js { render partial: 'modularized/payee_options', category: @payee }
+    end
+  end
+
   # GET /payees/new
   def new
     @payee = Payee.new

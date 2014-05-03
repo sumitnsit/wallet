@@ -9,8 +9,10 @@
 <body>
 
 <% if current_user %>
+	<% puts current_user.inspect %>
     Signed in as <strong><%= current_user.name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <p><%= link_to 'PayPal', current_user.paypal(units_url) %> </p>
 	   <div class="menu_bar">
 		<ul>
 			<li><%= link_to "Accounts", accounts_path %></li>

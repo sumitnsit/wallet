@@ -21,7 +21,7 @@
       %td= product.rate
       %td= product.amount
       %td= product.unit.name
-      %td= product.category.name
+      %td= product.category.nil? ? 'Non' : product.category.name
       %td= product.payee.nil? ? '' : product.payee.name
       %td= product.shopping_id
       %td= link_to 'Show', product

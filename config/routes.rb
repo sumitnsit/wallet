@@ -18,6 +18,19 @@ Money::Application.routes.draw do
 
   resources :transfers
 
+
+  resource :categories do
+    collection do
+      post :quick_new
+    end
+  end
+
+  resource :payees do
+    collection do
+      post :quick_new
+    end
+  end
+
   get 'categories/options', to: 'categories#options'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.order
+    @categories = Category.active
   end
 
   # GET /categories/1
@@ -17,12 +17,18 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
+  def quick_new
+    @category = Category.create(:name => params[:name], :parent_id => params[:Parent], :active => true)
+
+    respond_to do |format|
+        format.js { render partial: 'modularized/category_options', category: @category }
+    end
+  end
   # GET /categories/1/edit
   def edit
   end
 
   def options
-    puts "0000000000000000000000"
     respond_to do |format|
       format.html { render partial: 'modularized/category_options' }
     end
