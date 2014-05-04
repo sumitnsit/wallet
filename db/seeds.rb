@@ -31,13 +31,14 @@ Unit.find_or_create_by(name: "Meter", symbol: "m", active: true, unit_type: "Len
 Unit.find_or_create_by(name: "Units", symbol: "U", active: true, unit_type: "Unit", note:"")
 
 puts "Seeding Categories"
-none = Category.find_or_create_by(name: 'None', active: true, note: '')
+none = Category.find_or_create_by(name: '_None', active: true, note: '', id: 1, parent_id: 1)
 food = Category.find_or_create_by(parent_id: none.id, name: 'Food', active: true, note: '')
 Category.find_or_create_by(parent_id: none.id, name: 'Automobile', active: true, note: '')
 Category.find_or_create_by(parent_id: food.id, name: 'Grocery', active: true, note: '')
 Category.find_or_create_by(parent_id: food.id, name: 'Dining Out', active: true, note: '')
 
 puts "Seeding Payees"
+Payee.find_or_create_by(name: '_None', url: '', contact: '', note: '')
 Payee.find_or_create_by(name: 'Sonu', url: '', contact: '', note: '')
 Payee.find_or_create_by(name: 'Monga', url: '', contact: '', note: '')
 Payee.find_or_create_by(name: 'Roshan', url: '', contact: '', note: '')
