@@ -5,15 +5,16 @@
 %br
 %br
 
-.row-fluid
-  .span2.table_head Name
-  .span2.table_head Account type
-  .span2.table_head Currency    
-  .span2.table_head Balance
-  .span1.table_head Active
-  .span2.table_head Note
-  .span1.table_head
+.k_form
+	.row-fluid.data_row
+		.span2.table_head Name
+		.span2.table_head Account type
+		.span2.table_head Currency	
+		.span2.table_head Balance
+		.span1.table_head Active
+		.span2.table_head Note
+		.span1.table_head
 
-- @accounts.each do |account|
-  .row-fluid{class: "data_row", data: {target: "row_#{account.id}"}}
-    = render partial: 'modularized/account_row_view', locals: {account: account}
+	- @accounts.each do |account|
+		.row-fluid{class: "data_row", data: {target: "row_#{account.id}"}}
+			= render partial: 'modularized/account_row_view', locals: {account: account}

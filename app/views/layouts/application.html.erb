@@ -8,27 +8,18 @@
 </head>
 <body>
 
-<% if current_user %>
-	<% puts current_user.inspect %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <p><%= link_to 'PayPal', current_user.paypal(units_url) %> </p>
-	   <div class="menu_bar">
-		<ul>
-			<li><%= link_to "Accounts", accounts_path %></li>
-			<li><%= link_to "Categories", categories_path, rel: :popover, data: {content: "<form><input type='text'/></form>", placement: :bottom, "original-title" => "Fill in form", trigger: :hover} %></li>
-			<li><%= link_to "Units", units_path %></li>
-			<li><%= link_to "Currencies", currencies_path %></li>
-			<li><%= link_to "Shoppings", shoppings_path %></li>
-			<li><%= link_to "Products", products_path %></li>
-			<li><%= link_to "Payees", payees_path %></li>
-			<li><%= link_to "Transfers", transfers_path %></li>	
-		</ul>
-		<%= yield %>
-</div>  
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
+   <div class="menu_bar">
+	<ul>
+		<li><%= link_to "Accounts", accounts_path %></li>
+		<li><%= link_to "Categories", categories_path, rel: :popover, data: {content: "<form><input type='text'/></form>", placement: :bottom, "original-title" => "Fill in form", trigger: :hover} %></li>
+		<li><%= link_to "Units", units_path %></li>
+		<li><%= link_to "Currencies", currencies_path %></li>
+		<li><%= link_to "Shoppings", shoppings_path %></li>
+		<li><%= link_to "Products", products_path %></li>
+		<li><%= link_to "Payees", payees_path %></li>
+		<li><%= link_to "Transfers", transfers_path %></li>	
+	</ul>
+	<%= yield %>
 
 
 </body>
